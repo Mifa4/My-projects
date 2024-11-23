@@ -1,24 +1,29 @@
 #This file created to easy creating "Menu" in console.
-#Этот файл создан для простого "создания" Меню в консоле.
 
 import time
 
+#localization
 localization = "en"
 
-def Menu():
+#Menu
+def Menu(name):
     global localization
+
     while True:
+        #Menu interface
         if(localization == "en"):
-            print("             Console     tail.               \n")
+            print(f"             {name}               \n")
             time.sleep(1.5)
             print("     To play: P                 To settings:S\n")
         elif(localization == "рус"):
-            print("             Console     tail.               \n")
+            print(f"             {name}               \n")
             time.sleep(1.5)
             print("     Для игры: И              Для настроек: Н\n")
         do = input()
+        #Play
         if(do == "P" or do == "И"):
             Game()
+        #Settings
         elif(do == "S" or do == "Н"):
             if(localization == "en"):
                 print("Localisation : en or рус.")
@@ -35,5 +40,6 @@ def Menu():
             elif(localization == "рус"):
                 print("Мы не поняли эту команду")
 
+#Game
 def Game():
     pass
