@@ -1,1 +1,1 @@
-# In this repository i publish my projects.
+# In this repository I publishing my projects.
