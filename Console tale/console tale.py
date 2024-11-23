@@ -1,3 +1,6 @@
+#Console tail - network to create console dialog game.ы
+#Console tail - network для создания консольных диалоговых игр.
+
 import time;
 
 #Hello in the code of my project: console tale.
