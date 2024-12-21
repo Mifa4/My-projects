@@ -14,4 +14,7 @@ while True:
     do = input()
     if(do == 'close'):
         break
+    if(do == 'exit'):
+        pyglet.app.exit()
+        mainPlayerThr.join()
 
