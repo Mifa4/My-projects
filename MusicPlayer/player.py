@@ -1,8 +1,8 @@
 import threading
 import pyglet
-path = input('Where is the project? example: C:\\Users\\You\\Documents\\GitHub\\My-projects\\My-projects\\MusicPlayer \n') + '\\musics\\'
+path = input('Где этот проект? пример: C:\\Users\\You\\Documents\\GitHub\\My-projects\\My-projects\\MusicPlayer \n') + '\\musics\\'
 pathSave = path
-path += input('Имя файла в папке music ((example: test) automaticly add .mp3):\t') + '.mp3'
+path += input('Имя файла в папке music ((пример: test) автоматичиски добовляет .mp3 к файлу):\t') + '.mp3'
 def Player(path):
     song = pyglet.media.load(path)
     song.play()
@@ -17,4 +17,3 @@ while True:
     if(do == 'exit'):
         pyglet.app.exit()
         mainPlayerThr.join()
-
