@@ -32,6 +32,6 @@ label.pack()
 oval = canvas.create_oval((445,230),(500,300),fill='#27ab3b')#(x,y) size,(x,y) pos, color
 canvas.create_line((100,5),(100,400),(200,10),(100,400),(300,15),(100,400),(0,0),fill='#831ad9')
 #End
-canvas.pack()#maybe new canvas?
+canvas.pack()#create canvas
 win.bind("<KeyPress>",oval_movement)
 win.mainloop()#if this thread close all deamon threads close too.
