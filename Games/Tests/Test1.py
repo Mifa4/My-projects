@@ -25,7 +25,7 @@ def oval_movement(event):
     iac = canvas.coords(oval)
     if iac[0] < 0 or iac[1] < 0:
         canvas.moveto(oval,445,230)
-    elif iac[0] > 1300 or iac[1] > 650:
+    elif iac[0] > 1020 or iac[1] > 650:
         canvas.moveto(oval,445,230)
 label = vs.Label(win,text='Inginirium\nMifsi\nVS code\nTKinter')
 label.pack()
