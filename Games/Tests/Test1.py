@@ -25,13 +25,13 @@ def oval_movement(event):
     iac = canvas.coords(oval)
     if iac[0] < 0 or iac[1] < 0:
         canvas.moveto(oval,445,230)
-    elif iac[0] > 1300 or iac[1] > 650:
+    elif iac[0] > 1020 or iac[1] > 650:
         canvas.moveto(oval,445,230)
 label = vs.Label(win,text='Inginirium\nMifsi\nVS code\nTKinter')
 label.pack()
 oval = canvas.create_oval((445,230),(500,300),fill='#27ab3b')#(x,y) size,(x,y) pos, color
 canvas.create_line((100,5),(100,400),(200,10),(100,400),(300,15),(100,400),(0,0),fill='#831ad9')
 #End
-canvas.pack()#maybe new canvas?
+canvas.pack()#create canvas
 win.bind("<KeyPress>",oval_movement)
 win.mainloop()#if this thread close all deamon threads close too.
