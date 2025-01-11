@@ -1,0 +1,26 @@
+[
+  {
+    "uuid": "47019ceb-989f-3112-b759-433f4ff20f1c",
+    "name": "Student11",
+    "level": 4,
+    "bypassesPlayerLimit": false
+  },
+  {
+    "uuid": "35efd8c2-214a-3c51-a77a-b1cbb4f256a7",
+    "name": "Bytilka",
+    "level": 4,
+    "bypassesPlayerLimit": false
+  },
+  {
+    "uuid": "a188cb51-ceb3-3e3a-89bf-c3048f6742d1",
+    "name": "Student10",
+    "level": 4,
+    "bypassesPlayerLimit": false
+  },
+  {
+    "uuid": "edab2db0-b33a-3d29-976a-82f079fcfad2",
+    "name": "Restless___",
+    "level": 4,
+    "bypassesPlayerLimit": false
+  }
+]
