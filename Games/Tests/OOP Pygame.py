@@ -5,10 +5,15 @@ win = pygame.display.set_mode((300,300))
 
 class PlayerObject:
     def __init__(self,window,color,cordinate,radius):
+        #varribles
         self.col = (255,255,255)
         self.cord = [0,0]
         self.rad = 5
         self.jump = False
+        #constants
+        self.start_cord = self.cord[1]
+        self.down_jump = False
+        self.awake = True
         if not(isinstance(color, list)):
             if list(color).count == 3:
                 self.col = color
@@ -24,6 +29,11 @@ class PlayerObject:
     
     def Display(self):
         pygame.draw.circle(surface=self.win,color=self.col,center=self.cord,radius=self.rad)
+    
+    def Awake(self):
+        if self.awake == True:
+            self.awake = False
+
     def Mouve(self):
         if self.jump == False:
             key = pygame.key.get_pressed()
@@ -38,27 +48,22 @@ class PlayerObject:
                 self.cord[1] += 5
     def Jump(self):
         key = pygame.key.get_pressed()
-        start_cord = 0
         if key[pygame.K_SPACE] and self.jump == False:
             self.jump = True
-            s_rad = self.rad
-            self.rad += self.rad
-            start_cord = self.cord[1]
-            if self.cord[1] <= start_cord - 5:
-                self.cord[1] +=1
-            else:
-                self.cord[1] -= 1
-                
-            if self.cord[1] == start_cord:
-                self.jump = False
+            self.start_cord = self.cord[1]
         if self.jump == True:
-            self.cord[1] -= 1
-            if self.cord[1] == start_cord - 5:
+            if self.down_jump == False:
+                self.rad += 1
+                self.cord[1] -= 5
+            else:
                 self.cord[1] += 5
+                self.rad -= 1
+            if self.cord[1] == self.start_cord - 15:
+                self.down_jump = True
                 
-            if self.cord[1] == start_cord:
-                self.rad = s_rad
+            if self.cord[1] == self.start_cord and self.down_jump:
                 self.jump = False
+                self.down_jump = False
 
 
 Player_Circle = PlayerObject(win,(255,255,255),(150,150),15)
@@ -70,5 +75,6 @@ while True:
     Player_Circle.Display()
     Player_Circle.Mouve()
     Player_Circle.Jump()
+    Player_Circle.Awake()
     pygame.display.update()
     pygame.time.delay(20)
