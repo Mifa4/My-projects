@@ -55,7 +55,7 @@ while True:
         if event == pygame.QUIT:
             exit()
     win.fill((255,255,255))
-    objects.append(PlayerObject(win,(random.randint(1,255),random.randint(1,255),random.randint(1,255)),(x_max / 2,y_max / 2),15))
+    objects.append(PlayerObject(win,(random.randint(1,255),random.randint(1,255),random.randint(1,255)),(x_max / 2,y_max / 2),random.randint(5,75)))
     for i in range(0,len(objects)):
         objects[i].Awake()
         objects[i].Display()
