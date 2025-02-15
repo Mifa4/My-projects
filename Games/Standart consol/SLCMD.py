@@ -24,7 +24,7 @@ class MenuStructurer:
     def Menu(self):
         if self.save == self.checkpoints[0] + '\n' or self.save == self.checkpoints[0]:
             self.Poster(f'[MS]: Hello {self.playerName}.\n[MS]: Long time no see, let`s continue your adventure.\n[MS]: If you ready right comand "\\P",or "\\Q" if you want to quit.\n[MS]: Do you know what do command "\\S".',self.MenuWhaiter)
-            while self.exit == False or self.Play == True:
+            while self.exit == False and self.Play == False:
                 self.Poster('[CMD]: Enter command.',self.MenuWhaiter)
                 do = input(f'[{self.playerName}]:\t')
                 if do == '\\P':
@@ -40,7 +40,7 @@ class MenuStructurer:
                     self.Poster('[CMD]: Un registry command.',self.MenuWhaiter)
         elif (self.save == self.checkpoints[1] + '\n' or self.save == self.checkpoints[1]) and int(self.run) < 5:
             self.Poster(f'[MS]: Hello {self.playerName}.\n[MS]: It was so long.\n[MS]: I think i need remember only comands "\\P",or "\\Q".\n[MS]: !%$@!^#%^#!. "\\S".',self.MenuWhaiter)
-            while self.exit == False or self.Play == True:
+            while self.exit == False and self.Play == False:
                 self.Poster('[CMD]: Enter command.',self.MenuWhaiter)
                 do = input(f'[{self.playerName}]:\t')
                 if do == '\\P':
@@ -56,7 +56,7 @@ class MenuStructurer:
                     self.Poster('[CMD]: Un registry command.\n[MS]:Let`s be sirious.',self.MenuWhaiter)
         elif (self.save == self.checkpoints[1] + '\n' or self.save == self.checkpoints[1]) and int(self.run) >= 5:
             self.Poster(f'[MS]: Hello {self.playerName},You my best friend.\n[MS]: Continue "\\P",exit "\\Q".\n[MS]: "\\S".',self.MenuWhaiter)
-            while self.exit == False or self.Play == True:
+            while self.exit == False and self.Play == False:
                 self.Poster('[CMD]: Enter command.',self.MenuWhaiter)
                 do = input(f'[{self.playerName}]:\t')
                 if do == '\\P':
@@ -112,7 +112,24 @@ class MenuStructurer:
                 else:
                     self.run = fl[1]
 
+class SimulationStructure:
+    def __init__(self,size,checkpoints):
+        if type(size) == type((0,0)):
+            self.size = size
+        else:
+            self.size = (0,0)
+
+    def Simulation(self):
+        win = pygame.display.set_mode(self.size)
+        while True:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    exit()
+            win.fill((0,127,255))
+            pygame.display.update()
+
 Game = MenuStructurer('Researched №3',['Researched N3','Researched','New user'],0.05)
 Game.Menu()
 if Game.exit == False:
-    pass
+    Game = SimulationStructure((500,500),['',''])
+    Game.Simulation()
