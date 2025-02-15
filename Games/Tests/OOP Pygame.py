@@ -2,6 +2,7 @@ import pygame
 import time
 pygame.init()
 win = pygame.display.set_mode((300,300))
+clock =pygame.time.Clock()
 
 class PlayerObject:
     def __init__(self,window,color,cordinate,radius):
@@ -58,6 +59,7 @@ class PlayerObject:
             else:
                 self.cord[1] += 5
                 self.rad -= 10
+                self.rad -= 1
             if self.cord[1] == self.start_cord - 50:
                 self.down_jump = True
                 
@@ -69,7 +71,7 @@ class PlayerObject:
 Player_Circle = PlayerObject(win,(255,255,255),(150,150),15)
 while True:
     for event in pygame.event.get():
-        if event == pygame.QUIT:
+        if event.type == pygame.QUIT:
             exit()
     win.fill((0,0,0))
     Player_Circle.Display()
@@ -77,4 +79,5 @@ while True:
     Player_Circle.Jump()
     Player_Circle.Awake()
     pygame.display.update()
-    pygame.time.delay(20)
+    print(clock.get_fps())
+    clock.tick(100)
