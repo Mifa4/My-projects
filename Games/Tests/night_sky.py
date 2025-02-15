@@ -74,7 +74,7 @@ class PlayerObject:
 
 while True:
     for event in pygame.event.get():
-        if event == pygame.QUIT:
+        if event.type == pygame.QUIT:
             exit()
     win.fill((255,255,255))
     objects.append(FonObject(win,(1, 1, 1),(random.randint(0,x_max),random.randint(0,y_max)),random.randint(2,5)))

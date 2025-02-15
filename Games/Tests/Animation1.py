@@ -52,7 +52,7 @@ class PlayerObject:
 
 while True:
     for event in pygame.event.get():
-        if event == pygame.QUIT:
+        if event.type == pygame.QUIT:
             exit()
     win.fill((255,255,255))
     objects.append(PlayerObject(win,(random.randint(1,255),random.randint(1,255),random.randint(1,255)),(x_max / 2,y_max / 2),random.randint(5,75)))

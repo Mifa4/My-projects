@@ -37,7 +37,7 @@ class PlayerObjectS:
 
 while True:
     for event in pygame.event.get():
-        if event == pygame.QUIT:
+        if event.type == pygame.QUIT:
             exit()
     win.fill((255,255,255))
     

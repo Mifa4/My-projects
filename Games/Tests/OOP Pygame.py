@@ -70,7 +70,7 @@ class PlayerObject:
 Player_Circle = PlayerObject(win,(255,255,255),(150,150),15)
 while True:
     for event in pygame.event.get():
-        if event == pygame.QUIT:
+        if event.type == pygame.QUIT:
             exit()
     win.fill((0,0,0))
     Player_Circle.Display()
