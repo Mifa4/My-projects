@@ -1,85 +1,143 @@
 import pygame
-X_size = 500
-Y_size = 500
-win = pygame.display.set_mode((X_size,Y_size))
+import random
+
+Gray = [70] * 3
+Black = [0] * 3
+White = [255] * 3
+Widht,Height = 600,600
+
+pygame.init()
+win = pygame.display.set_mode((Widht,Height))
 
 class Board:
-    def __init__(self):
-        self.map = [0,0,0,
-                    0,0,0,
-                    0,0,0]
+    def __init__(self,Width,Heights,size):
+        self.Width,self.Height = Widht,Height
+        self.size = size
+        self.board = [
+            [0,0,0],
+            [0,0,0],
+            [0,0,0]
+        ]
+        self.move = 1
+        self.winner = 0
+        self.situation = -1
+    
+    def click(self,mouse_pos):
+        x = mouse_pos[0] // self.size
+        y = mouse_pos[1] // self.size
+        if self.board[y][x] == 0:
+            self.board[y][x] = self.move
+        self.move = -self.move
 
-    def ClearMap(self):
-        self.map = [0,0,0,
-                    0,0,0,
-                    0,0,0]
-    
-    def ChangeMap(self,changeIndex,changeValue):
-        if changeIndex < len(self.map) and (changeValue >= 0 and changeValue <= 2):
-            self.map[changeIndex] = changeValue
-        else:
-            print('In correct index or value')
-    
-    def UDLine(self,X_max):
-        return X_max / 3
-    
-    def LRLine(self,Y_max):
-        return Y_max / 3
-    
-    def Printer(self,X_max,Y_max):
-        index = 0
-        Yindex = 0
-        x_c = X_max / 3
-        y_c = Y_max / 3
-        for i in self.map:
-            if i == 1:
-                pass
-            elif i == 2:
-                if X_max <= Y_max:
-                    pygame.draw.circle(win,(0,0,255),((x_c * index) + (x_c / 2),(y_c * Yindex) + (y_c / 2)),x_c / 2)
-                else:
-                    pygame.draw.circle(win,(0,0,255),((x_c * index) + (x_c / 2),(y_c * Yindex) + (y_c / 2)),y_c / 2)
-            if index == 2:
-                index = -1
-                Yindex += 1
-            index += 1
-            if index == 3 and Yindex == 3:
-                break
+    def renderer(self,screen):
+        pygame.draw.line(screen,Gray,(0,200), (self.Width,200))
+        pygame.draw.line(screen,Gray,(0,400), (self.Width,400))
+
+        pygame.draw.line(screen,Gray,(200,0), (200,self.Width))
+        pygame.draw.line(screen,Gray,(400,0), (400,self.Width))
+
+        for y in range(3):
+            for x in range(3):
+                if self.board[y][x] == 1:
+                    self.draw_cross(screen,x,y,self.size)
+                elif self.board[y][x] == -1:
+                    self.draw_circle(screen,x,y,self.size)
+        
+        if self.winner != 0:
+            if self.situation == 0:
+                pygame.draw.line(screen,(0,255,255),(0,(Height / 3) / 2),(Widht,(Height / 3) / 2),5)
+            if self.situation == 1:
+                pygame.draw.line(screen,(0,255,255),(0,(Height / 3 * 2) - Height / 3 / 2),(Widht,(Height / 3 * 2) - Height / 3 / 2),5)
+            if self.situation == 2:
+                pygame.draw.line(screen,(0,255,255),(0,(Height / 3 * 3) - Height / 3 / 2),(Widht,(Height / 3 * 3) - Height / 3 / 2),5)
             
-class Motions:
-    def __init__(self):
-        self.motion = 2
+            if self.situation == 3:
+                pygame.draw.line(screen,(0,255,255),((Widht / 3) / 2,0),((Widht / 3) / 2,Height),5)
+            if self.situation == 4:
+                pygame.draw.line(screen,(0,255,255),((Widht / 3 * 2) - Widht / 3 / 2,0),((Widht / 3 * 2) - Widht / 3 / 2,Height),5)
+            if self.situation == 5:
+                pygame.draw.line(screen,(0,255,255),((Widht / 3 * 3) - Widht / 3 / 2,0),((Widht / 3 * 3) - Widht / 3 / 2,Height),5)
+            
+            if self.situation == 6:
+                pygame.draw.line(screen,(0,255,255),(0,0),(Widht,Height),5)
+            if self.situation == 7:
+                pygame.draw.line(screen,(0,255,255),(Widht,0),(0,Height),5)
     
-    def NextMotion(self):
-        if self.motion == 1:
-            self.motion = 2
-        elif self.motion == 2:
-            self.motion = 1
-        else:
-            self.motion = 1
+    def draw_circle(self,screen,x,y,size):
+        x = (x + .5) * size
+        y = (y + .5) * size
+        pygame.draw.circle(screen, (0,0,255),(x,y),(size - 3) // 2,3)
 
-GameBoard = Board()
-Motion = Motions()
+    def draw_cross(self,screen,x,y,size):
+        x = x * size + 3
+        y = y * size + 3
+        pygame.draw.line(screen,(255,0,0),(x,y),(x + size - 3, y + size -3),3)
+        pygame.draw.line(screen,(255,0,0),(x + size - 3,y - 3),(x,y + size  -3),3)
+    
+    def win(self):
+        #Cross checker
+        for y in range(3):
+            if self.board[y][0] == 1 and self.board[y][1] == 1 and self.board[y][2] == 1:
+                self.winner = 1
+                self.situation = 1 * y
+
+        for x in range(3):
+            if self.board[0][x] == 1 and self.board[1][x] == 1 and self.board[2][x] == 1:
+                self.winner = 1
+                self.situation = 3 + (1 * x)
+
+        if self.board[0][0] == 1 and self.board[1][1] == 1 and self.board[2][2] == 1:
+            self.winner = 1
+            self.situation = 6
+        if self.board[0][2] == 1 and self.board[1][1] == 1 and self.board[2][0] == 1:
+            self.winner = 1
+            self.situation = 7
+        
+        #Circle checker
+        for y in range(3):
+            if self.board[y][0] == -1 and self.board[y][1] == -1 and self.board[y][2] == -1:
+                self.winner = -1
+                self.situation = 1 * y
+
+        for x in range(3):
+            if self.board[0][x] == -1 and self.board[1][x] == -1 and self.board[2][x] == -1:
+                self.winner = -1
+                self.situation = 3 + (1 * y)
+
+        if self.board[0][0] == -1 and self.board[1][1] == -1 and self.board[2][2] == -1:
+            self.winner = -1
+            self.situation = 6
+        if self.board[0][2] == -1 and self.board[1][1] == -1 and self.board[2][0] == -1:
+            self.winner = -1
+            self.situation = 7
+    
+
+board = Board(Width=Widht,Heights=Height,size=200)
+win_ = False
 while True:
+    if win_ == False:
+        if board.winner == 1:
+            print("Cross is win!")
+            win_ = True
+        elif board.winner == -1:
+            print("Circles is win!")
+            win_ = True
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             exit()
         if event.type == pygame.MOUSEBUTTONDOWN:
-            x_c = X_size / 3
-            y_c = Y_size / 3
-            m_p = pygame.mouse.get_pos()
-            for i in range(0,len(GameBoard.map),1):
-                if m_p[0] * i < x_c and m_p[1] * i < y_c:
-                    GameBoard.ChangeMap(i,Motion.motion)
-                    break
+            if board.winner == 0:
+                board.click(event.pos)
+                board.win()
+        
+        for i in range(10):
+            pygame.draw.circle(win,Gray,(random.randint(0,Widht),random.randint(0,Height)),1)
 
-    win.fill((255,255,255))
-
-    for i in range(1,3,1):
-        pygame.draw.line(win,(0,0,0),(GameBoard.UDLine(X_size) * i,0),(GameBoard.UDLine(X_size) * i,Y_size))
-    for i in range(1,3,1):
-        pygame.draw.line(win,(0,0,0),(0,GameBoard.LRLine(Y_size) * i),(X_size,GameBoard.LRLine(Y_size) * i))
-    
-    GameBoard.Printer(X_size,Y_size)
-
+    win.fill(White)
+    board.renderer(screen=win)
+    pressed = pygame.mouse.get_pressed()
+    if pressed[0]:
+        pos = pygame.mouse.get_pos()
+        pygame.draw.circle(win,White,pos,5)
     pygame.display.update()
