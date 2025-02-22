@@ -54,10 +54,11 @@ class PlayerObject:
             self.start_cord = self.cord[1]
         if self.jump == True:
             if self.down_jump == False:
-                self.rad += 1
+                self.rad += 5
                 self.cord[1] -= 5
             else:
                 self.cord[1] += 5
+                self.rad -= 10
                 self.rad -= 1
             if self.cord[1] == self.start_cord - 50:
                 self.down_jump = True
