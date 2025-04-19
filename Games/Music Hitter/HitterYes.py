@@ -109,7 +109,6 @@ FunnyYetSound = pygame.mixer.Sound(r'C:\Users\nout_student4\Documents\GitHub\My-
 PlakySound = pygame.mixer.Sound(r'C:\Users\nout_student4\Documents\GitHub\My-projects\Games\Music Hitter\Musics\PlakyPlaky.mp3')
 QuestionSound = pygame.mixer.Sound(r'C:\Users\nout_student4\Documents\GitHub\My-projects\Games\Music Hitter\Musics\Flowey.mp3')
 BIOSSound = pygame.mixer.Sound(r'C:\Users\nout_student4\Documents\GitHub\My-projects\Games\Music Hitter\Musics\BIOS.mp3')
-BadFace = pygame.mixer.Sound(r'C:\Users\nout_student4\Documents\GitHub\My-projects\Games\Music Hitter\Musics\BadFace.mp3')
 ep = False
 horp = False
 funp = False
@@ -145,8 +144,6 @@ def Play(mus):
             deterp = True
         else:
             BIOSSound.play()
-    if mus == 'badface':
-        BadFace.play()
 while True:
     for e in pygame.event.get():
         if e.type == pygame.QUIT:
