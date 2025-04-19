@@ -69,7 +69,13 @@ keys = pygame.key.get_pressed()
 
 #win
 win = pygame.display.set_mode((w,h))
-if nl == win:
+
+def UpdatingVaribles():
+    global keys,nl,xPos,yPos
+    #Keys
+    keys = pygame.key.get_pressed()
+
+    if nl == win:
         nl = 1
         xPos = 1
         yPos = 1

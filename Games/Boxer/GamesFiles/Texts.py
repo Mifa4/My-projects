@@ -1,6 +1,35 @@
 from Varibles import *
+import Varibles
 
 def TextRender():
+    l1 = Varibles.l1
+    l2 = Varibles.l2
+    l3 = Varibles.l3
+    l4 = Varibles.l4
+    l1_rgb = Varibles.l1_rgb
+    l2_rgb = Varibles.l2_rgb
+    l3_rgb = Varibles.l3_rgb
+    l4_rgb = Varibles.l4_rgb
+    wl1 = Varibles.wl1
+    wl2 = Varibles.wl2
+    wl3 = Varibles.wl3
+    wl4 = Varibles.wl4
+    sec = Varibles.sec
+    minutes = Varibles.minutes
+    hour = Varibles.hour
+    sec1 = Varibles.sec1
+    minutes1 = Varibles.minutes1
+    hour1 = Varibles.hour1
+    sec2 = Varibles.sec2
+    sec3 = Varibles.sec3
+    minutes2 = Varibles.minutes2
+    minutes3 = Varibles.minutes3
+    hour2 = Varibles.hour2
+    hour3 = Varibles.hour3
+    b1 = Varibles.b1
+    b2 = Varibles.b2
+    b3 = Varibles.b3
+    b4 = Varibles.b4
     L1Text = Font1.render(f'Биом{b1}',True,(255 - l1_rgb[0],255 - l1_rgb[1],255 - l1_rgb[2]))
     L2Text = Font1.render(f'Биом{b2}',True,(255 - l2_rgb[0],255 - l2_rgb[1],255 - l2_rgb[2]))
     L3Text = Font1.render(f'Биом{b3}',True,(255 - l3_rgb[0],255 - l3_rgb[1],255 - l3_rgb[2]))

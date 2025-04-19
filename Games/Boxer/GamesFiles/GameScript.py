@@ -4,9 +4,11 @@ from Musics import *
 from Texts import *
 
 while True:
+    #global keys
     for e in pygame.event.get():
         if e.type == pygame.QUIT:
             exit()
+    UpdatingVaribles()
 
     TextRender()
 
