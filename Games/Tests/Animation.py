@@ -4,7 +4,7 @@ pygame.init()
 y_max = 495
 x_max = 495
 win = pygame.display.set_mode((x_max,y_max))
-clock =pygame.time.Clock()
+clock = pygame.time.Clock()
 objects = []
 
 class PlayerObject:
