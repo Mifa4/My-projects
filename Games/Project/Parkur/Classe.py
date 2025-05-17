@@ -19,6 +19,7 @@ class Object:
         self.touch = False
         self.count = 0
         self.type = type
+        self.p = False
     
     def Update(self,keys,obj,level):
         if self.falling == False:
@@ -71,10 +72,10 @@ class Object:
         selfleft = self.pos[0]
         #if bottom <= selftop and right >= selfleft and left <= selfright and top >= selfbottom:
         if selfbottom >= top and selfright >= left and selfleft <= right and selftop <= bottom:
-            obj.touch = True
-            obj.pos[1] = selftop - self.size[1]
+            self.p = True
+            obj.pos[1] = selftop - obj.size[1]
         else:
-            obj.touch = False
+            self.p = False
     
     def Obctacle(self,obj):
         top = obj.pos[1]

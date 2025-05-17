@@ -3,14 +3,12 @@ from Parkur.Methods import *
 import Parkur.Methods
 from Parkur.Classe import *
 import Parkur.Classe
-
+Player = Object([50,50],[27,327], [27, 327],r'C:\Users\nout_student4\Documents\GitHub\My-projects\Games\Project\Parkur\Textures\PlayerT1.png',r'C:\Users\nout_student4\Documents\GitHub\My-projects\Games\Project\Parkur\Textures\PlayerT2.png',True,'')
 def Parkur_Time(level):
+    global Player
     pygame.init()
     w,h = 1000,500
     win = pygame.display.set_mode((w,h))
-    Player = Object([50,50],[0,0], [0, 0],r'C:\Users\nout_student4\Documents\GitHub\My-projects\Games\Project\Parkur\Textures\PlayerT1.png',r'C:\Users\nout_student4\Documents\GitHub\My-projects\Games\Project\Parkur\Textures\PlayerT2.png',True,'')
-    Box = Object([50,50],[0,h-10],[0,h-10], r'C:\Users\nout_student4\Documents\GitHub\My-projects\Games\Boxes\Textures\Box.png',None,None,'Plat')
-    level = 1
     FPS = 60
     clock = pygame.time.Clock()
     while True:
@@ -21,7 +19,6 @@ def Parkur_Time(level):
         keys = pygame.key.get_pressed()
         Player.Mouve(5,keys)
         Player.Update(keys,'',level)
-        #Box.Update(keys,Player,level)
         win.blit(Player.image,(Player.pos[0],Player.pos[1]))
         Load_Level(level,win,Player)
         pygame.display.update()

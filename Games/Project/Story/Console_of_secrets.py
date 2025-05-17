@@ -3,6 +3,7 @@ def Program():
     res = ''
     Say('!Controler of correct work!: Этой консоли для корректной обработки файлов необходимо указать путь до папки где содержиться этот файл с окончанием на \\ \nНа пример: C:\Users\User\Desktop\This_Game\.',0.01)
     please = input()
+    please = input('!Controler of correct work!: Этой консоли для корректной обработки файлов необходимо указать путь до папки где содержиться этот файл с окончанием на \\ \nнапример: C:\\Users\\User\\Desktop\\This_Game\\.')
     s = open(f'{please}Save\Save.cons_of_s','r')
     reader = s.readlines()
     data = Reader(reader)
@@ -14,6 +15,7 @@ def Program():
         Say('[???]: Новенький? Помоги мне, я тут застрял.',0.1)
         Say('[Console]: Назовитесь!',0.001)
         name = input()
+        name = input('[???]: Новенький? Помоги мне, я тут застрял.\n[Console]: Назовитесь\t')
         while name != '' or name != ' ':
             Say('[Console]: Повторите!',0.001)
             name = input()
@@ -26,6 +28,7 @@ def Program():
         if data[1] == ' ' or data[1] == '':
             Say('[???]: Я тебя забыл или,\n{?Удивленние?}[???]:Назовись!\t',0.1)
             name = input()
+            name = input('[???]: Я тебя забыл или,\n{?Удивленние?}[Пленик]:Назовись!\t')
     if data[0] == '0' or data[0] == ' ' or data[0] == '':
         open_ = '1'
     else:
