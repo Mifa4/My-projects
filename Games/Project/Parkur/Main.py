@@ -3,9 +3,10 @@ from Parkur.Methods import *
 import Parkur.Methods
 from Parkur.Classe import *
 import Parkur.Classe
-Player = Object([50,50],[27,327], [27, 327],r'C:\Users\nout_student4\Documents\GitHub\My-projects\Games\Project\Parkur\Textures\PlayerT1.png',r'C:\Users\nout_student4\Documents\GitHub\My-projects\Games\Project\Parkur\Textures\PlayerT2.png',True,'')
-def Parkur_Time(level):
-    global Player
+Player = Object([50,50],[27,327], [27, 327],r'C:\Users\Елена\Documents\GitHub\My-projects\Games\Project\Parkur\Textures\PlayerT1.png',r'C:\Users\Елена\Documents\GitHub\My-projects\Games\Project\Parkur\Textures\PlayerT2.png',True,'')
+level = 1
+def Parkur_Time():
+    global Player,level
     pygame.init()
     w,h = 1000,500
     win = pygame.display.set_mode((w,h))
@@ -18,7 +19,7 @@ def Parkur_Time(level):
         win.fill((255,255,255))
         keys = pygame.key.get_pressed()
         Player.Mouve(5,keys)
-        Player.Update(keys,'',level)
+        Player.Update(keys,'',level,None,None,None)
         win.blit(Player.image,(Player.pos[0],Player.pos[1]))
         Load_Level(level,win,Player)
         pygame.display.update()

@@ -1,7 +1,7 @@
 from time import sleep
 def Program():
     res = ''
-    Say('!Controler of correct work!: Этой консоли для корректной обработки файлов необходимо указать путь до папки где содержиться этот файл с окончанием на \\ \nНа пример: C:\Users\User\Desktop\This_Game\.',0.01)
+    Say('!Controler of correct work!: Этой консоли для корректной обработки файлов необходимо указать путь до папки где содержиться этот файл с окончанием на \\ \nНа пример: C:\\Users\\User\\Desktop\\This_Game\\.',0.01)
     please = input()
     please = input('!Controler of correct work!: Этой консоли для корректной обработки файлов необходимо указать путь до папки где содержиться этот файл с окончанием на \\ \nнапример: C:\\Users\\User\\Desktop\\This_Game\\.')
     s = open(f'{please}Save\Save.cons_of_s','r')

@@ -21,7 +21,7 @@ class Object:
         self.type = type
         self.p = False
     
-    def Update(self,keys,obj,level):
+    def Update(self,keys,obj,level,objects,offIndex):
         if self.falling == False:
             if keys[pygame.K_w] or keys[pygame.K_UP]:
                 self.count += self.Jump()
@@ -36,8 +36,10 @@ class Object:
             self.Plat(obj)
         elif self.type == 'Obctacle':
             self.Obctacle(obj)
+        elif self.type == 'Button':
+            self.Button(obj,offIndex,objects)
         elif self.type == 'End':
-            self.NextLevel(level)
+            self.NextLevel(Parkur.Main.Player,level)
         self.rect = self.image.get_rect()
         
 
@@ -87,8 +89,22 @@ class Object:
         selfright = self.pos[0] + self.size[0]
         selfleft = self.pos[0]
         #if bottom <= selftop and right >= selfleft and left <= selfright and top >= selfbottom:
-        if selfbottom >= top and selfright >= left and selfleft <= right and selftop <= bottom:
+        if selfbottom >= top and selfright >= left+10 and selfleft <= right-10 and selftop <= bottom-10:
             obj.pos = obj.start_pos[:]
+    
+    def Button(self,obj,offObjIndex,objects,thisObj):
+        top = obj.pos[1]
+        bottom = obj.pos[1] + obj.size[1]
+        right = obj.pos[0] + obj.size[0]
+        left = obj.pos[0]
+        selftop = self.pos[1]
+        selfbottom = self.pos[1] + self.size[1]
+        selfright = self.pos[0] + self.size[0]
+        selfleft = self.pos[0]
+        #if bottom <= selftop and right >= selfleft and left <= selfright and top >= selfbottom:
+        if selfbottom >= top and selfright >= left+10 and selfleft <= right-10 and selftop <= bottom-10:
+            objects.pop(offObjIndex)
+            objects.pop(thisObj)
     
     def NextLevel(self,obj,level):
         top = obj.pos[1]
@@ -101,7 +117,7 @@ class Object:
         selfleft = self.pos[0]
         #if bottom <= selftop and right >= selfleft and left <= selfright and top >= selfbottom:
         if selfbottom >= top and selfright >= left and selfleft <= right and selftop <= bottom:
-            New_Level(level)
+            Parkur.Methods.New_Level()
 
 class Text:
     def __init__(self,name,size,text,pos,color):

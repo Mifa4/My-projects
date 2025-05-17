@@ -2,7 +2,7 @@ from Parkur.Main import *
 import Parkur.Main
 from Story.Console_of_secrets import *
 import Story.Console_of_secrets
-Parkur_Time(1)
+Parkur_Time()
 '''
 res = Story.Console_of_secrets.Program()
 if res[0] == 'P':
