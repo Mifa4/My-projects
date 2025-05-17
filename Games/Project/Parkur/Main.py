@@ -1,8 +1,8 @@
 import pygame
-from Methods import *
-import Methods
-from Classe import *
-import Classe
+from Parkur.Methods import *
+import Parkur.Methods
+from Parkur.Classe import *
+import Parkur.Classe
 
 def Parkur_Time(level):
     pygame.init()

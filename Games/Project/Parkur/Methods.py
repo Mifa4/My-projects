@@ -1,7 +1,7 @@
 import pygame
 from time import sleep
-from Classe import *
-import Classe
+from Parkur.Classe import *
+import Parkur.Classe
 
 pygame.init()
 def Timer():

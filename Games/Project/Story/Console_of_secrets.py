@@ -1,6 +1,8 @@
+from time import sleep
 def Program():
     res = ''
-    please = input('!Controler of correct work!: Этой консоли для корректной обработки файлов необходимо указать путь до папки где содержиться этот файл с окончанием на \ \nнапример: C:\Users\User\Desktop\This_Game\.')
+    Say('!Controler of correct work!: Этой консоли для корректной обработки файлов необходимо указать путь до папки где содержиться этот файл с окончанием на \\ \nНа пример: C:\Users\User\Desktop\This_Game\.',0.01)
+    please = input()
     s = open(f'{please}Save\Save.cons_of_s','r')
     reader = s.readlines()
     data = Reader(reader)
@@ -9,15 +11,21 @@ def Program():
     lv_p = data[2]
     lv_s = data[3]
     if data[0] == '0' or data[0] == ' ' or data[0] == '':
-        name = input('[Пленик]: Новенький? Помоги мне, я тут застрял.\n[Console]: Назовитесь\t')
+        Say('[???]: Новенький? Помоги мне, я тут застрял.',0.1)
+        Say('[Console]: Назовитесь!',0.001)
+        name = input()
         while name != '' or name != ' ':
-            name = input('\n[Console]: Повторите!\t')
+            Say('[Console]: Повторите!',0.001)
+            name = input()
     while name != '' or name != ' ':
-            name = input('\n!Controler of correct work!: No_critical_error_1\t[Пленик]: Перевожу, Ошибка "кто-то побаловался с файлом сохранения", а именно "именем".')
+        Say('!Controler of correct work!: No_critical_error_1',0.01)
+        Say('[{???}:?????????]: Перевожу, Ошибка "кто-то побаловался с файлом сохранения", а именно "именем".',0.1)
+        name = input()
     else:
-        print(f'Привет {data[1]}')
+        Say(f'[???]: Привет {data[1]}',0.1)
         if data[1] == ' ' or data[1] == '':
-            name = input('[Пленик]: Я тебя забыл или,\n{?Удивленние?}[Пленик]:Назовись!\t')
+            Say('[???]: Я тебя забыл или,\n{?Удивленние?}[???]:Назовись!\t',0.1)
+            name = input()
     if data[0] == '0' or data[0] == ' ' or data[0] == '':
         open_ = '1'
     else:
@@ -68,3 +76,9 @@ def Write(file,data):
 
 def Err0r():
     pass
+
+def Say(text,sleep_time):
+    print()
+    for i in text:
+        print(i,end='')
+        sleep(sleep_time)
