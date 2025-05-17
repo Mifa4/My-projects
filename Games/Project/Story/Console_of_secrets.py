@@ -1,6 +1,6 @@
 def Program():
     res = ''
-    please = input('!Controler of correct work!: Этой консоли для корректной обработки файлов необходимо указать путь до папки где содержиться этот файл с окончанием на \ \nнапример: C:\Users\User\Desktop\This_Game\.')
+    please = input('!Controler of correct work!: Этой консоли для корректной обработки файлов необходимо указать путь до папки где содержиться этот файл с окончанием на \\ \nнапример: C:\\Users\\User\\Desktop\\This_Game\\.')
     s = open(f'{please}Save\Save.cons_of_s','r')
     reader = s.readlines()
     data = Reader(reader)
@@ -9,7 +9,7 @@ def Program():
     lv_p = data[2]
     lv_s = data[3]
     if data[0] == '0' or data[0] == ' ' or data[0] == '':
-        name = input('[Пленик]: Новенький? Помоги мне, я тут застрял.\n[Console]: Назовитесь\t')
+        name = input('[???]: Новенький? Помоги мне, я тут застрял.\n[Console]: Назовитесь\t')
         while name != '' or name != ' ':
             name = input('\n[Console]: Повторите!\t')
     while name != '' or name != ' ':
@@ -17,7 +17,7 @@ def Program():
     else:
         print(f'Привет {data[1]}')
         if data[1] == ' ' or data[1] == '':
-            name = input('[Пленик]: Я тебя забыл или,\n{?Удивленние?}[Пленик]:Назовись!\t')
+            name = input('[???]: Я тебя забыл или,\n{?Удивленние?}[Пленик]:Назовись!\t')
     if data[0] == '0' or data[0] == ' ' or data[0] == '':
         open_ = '1'
     else:

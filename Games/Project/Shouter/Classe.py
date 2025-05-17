@@ -1,6 +1,6 @@
 import pygame
-from Methods  import *
-import Methods
+from Parkur.Methods  import *
+import Parkur.Methods
 
 pygame.init()
 class Object:
