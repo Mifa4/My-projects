@@ -25,9 +25,10 @@ level1 = [
     Object([2000,50],[-500,475],None,r'C:\Users\nout_student4\Documents\GitHub\My-projects\Games\Project\Parkur\Textures\Lava.png',None,None,'Obctacle'),
     Object([118,15],[1,364],None,r'C:\Users\nout_student4\Documents\GitHub\My-projects\Games\Project\Parkur\Textures\Plat.png',None,None,'Plat'),
     Object([50,5],[200,341],None,r'C:\Users\nout_student4\Documents\GitHub\My-projects\Games\Project\Parkur\Textures\Plat.png',None,None,'Plat'),
-    Object([50,5],[275,300],None,r'C:\Users\nout_student4\Documents\GitHub\My-projects\Games\Project\Parkur\Textures\Plat.png',None,None,'Plat'),
+    Object([50,5],[300,300],None,r'C:\Users\nout_student4\Documents\GitHub\My-projects\Games\Project\Parkur\Textures\Plat.png',None,None,'Plat'),
     Object([100,15],[400,225],None,r'C:\Users\nout_student4\Documents\GitHub\My-projects\Games\Project\Parkur\Textures\Plat.png',None,None,'Plat'),
     Object([25,10],[650,350],None,r'C:\Users\nout_student4\Documents\GitHub\My-projects\Games\Project\Parkur\Textures\Plat.png',None,None,'Plat'),
+    Object([15,15],[425,220],None,r'C:\Users\nout_student4\Documents\GitHub\My-projects\Games\Project\Parkur\Textures\Spike.png',None,None,'Obctacle'),
     #Object([25,10],[800,200],None,r'C:\Users\nout_student4\Documents\GitHub\My-projects\Games\Project\Parkur\Textures\Plat.png',None,None,'End')
     ]
 def Load_Level(level,win,Player):
