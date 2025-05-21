@@ -3,6 +3,7 @@ from Parkur.Methods  import *
 import Parkur.Methods
 from Story.Console_of_secrets import *
 import Story.Console_of_secrets
+from time import sleep
 import random
 
 pygame.init()
@@ -98,6 +99,8 @@ class Object:
         #if bottom <= selftop and right >= selfleft and left <= selfright and top >= selfbottom:
         if selfbottom >= top and selfright >= left+10 and selfleft <= right-10 and selftop <= bottom-10:
             Parkur.Main.deaths += 1
+            data = Read()
+            Write([f'open:{data[0]}',f'name:{data[1]}',f'level_of_parkur:{data[2]}',f'Time1:{data[3]}',f'Time2:{data[4]}',f'Time3:{data[5]}',f'Time4:{data[6]}',f'Time5:{data[7]}',f'Deaths:{Parkur.Main.deaths}','!Controler of correct work!: !Controler of correct work!: Don`t redact that file!'])
             s = random.randint(0,10)
             if s == 0:
                 Say('[???]:...',0.1)
@@ -163,16 +166,21 @@ class Object:
         #if bottom <= selftop and right >= selfleft and left <= selfright and top >= selfbottom:
         if selfbottom >= top and selfright >= left and selfleft <= right and selftop <= bottom:
             Parkur.Methods.New_Level()
+            data = Read()
             if level == 1:
+                Write([f'open:{data[0]}',f'name:{data[1]}',f'level_of_parkur:2',f'Time1:{Parkur.Main.sec}.{Parkur.Main.min}.{Parkur.Main.hours}',f'Time2:{data[4]}',f'Time3:{data[5]}',f'Time4:{data[6]}',f'Time5:{data[7]}',f'Deaths:{data[8]}','!Controler of correct work!: !Controler of correct work!: Don`t redact that file!'])
                 Say('[???]:Тебе еще надо много пройти.',0.1)
                 Parkur.Main.musics.Play(1)
             elif level == 2:
+                Write([f'open:{data[0]}',f'name:{data[1]}',f'level_of_parkur:3',f'Time1:{data[3]}',f'Time2:{Parkur.Main.sec}.{Parkur.Main.min}.{Parkur.Main.hours}',f'Time3:{data[5]}',f'Time4:{data[6]}',f'Time5:{data[7]}',f'Deaths:{data[8]}','!Controler of correct work!: !Controler of correct work!: Don`t redact that file!'])
                 Say('[???]:2! Мало кто это проходил!',0.1)
                 Parkur.Main.musics.Play(2)
             elif level == 3:
+                Write([f'open:{data[0]}',f'name:{data[1]}',f'level_of_parkur:4',f'Time1:{data[3]}',f'Time2:{data[4]}',f'Time3:{Parkur.Main.sec}.{Parkur.Main.min}.{Parkur.Main.hours}',f'Time4:{data[6]}',f'Time5:{data[7]}',f'Deaths:{data[8]}','!Controler of correct work!: !Controler of correct work!: Don`t redact that file!'])
                 Say('[???]:Ты почти добрался до меня.',0.1)
                 Parkur.Main.musics.Play(3)
             elif level == 4:
+                Write([f'open:{data[0]}',f'name:{data[1]}',f'level_of_parkur:5',f'Time1:{data[3]}',f'Time2:{data[4]}',f'Time3:{data[5]}',f'Time4:{Parkur.Main.sec}.{Parkur.Main.min}.{Parkur.Main.hours}',f'Time5:{data[7]}',f'Deaths:{data[8]}','!Controler of correct work!: !Controler of correct work!: Don`t redact that file!'])
                 Say('[???]:Ещё чуть-чуть.',0.1)
                 Say('[???]:Ты почти попал в моё начало!.!',0.1)
                 Parkur.Main.musics.Play(4)
@@ -189,11 +197,14 @@ class Object:
         selfleft = self.pos[0]
         #if bottom <= selftop and right >= selfleft and left <= selfright and top >= selfbottom:
         if selfbottom >= top and selfright >= left and selfleft <= right and selftop <= bottom:
+            data = Read()
             Say('[VirtualKiller]:Спасибо!!!!!!!!!!!!!!!!!!!!!!!.',0.15)
             Say('[Console]: Объект выбрался на поверхность!',0.001)
+            sleep(2)
             Say('[Console]: Объект был потерян!',0.001)
             Say('![Console]!: Произошла фотальная ошибка. ERR0R',0.7)
             Parkur.Main.Play = False
+            Write([f'open:{data[0]}',f'name:{data[1]}',f'level_of_parkur:End',f'Time1:{data[3]}',f'Time2:{data[4]}',f'Time3:{data[5]}',f'Time4:{data[6]}',f'Time5:{Parkur.Main.sec}.{Parkur.Main.min}.{Parkur.Main.hours}','!Controler of correct work!: !Controler of correct work!: Don`t redact that file!'])
             Err0r()
 
 class Text:

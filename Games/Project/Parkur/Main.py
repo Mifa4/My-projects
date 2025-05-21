@@ -5,16 +5,23 @@ from Parkur.Methods import *
 import Parkur.Methods
 from Parkur.Classe import *
 import Parkur.Classe
+import Story.Console_of_secrets
 Player = Object([50,50],[27,327], [27, 327],r'C:\Users\Елена\Documents\GitHub\My-projects\Games\Project\Parkur\Textures\PlayerT1.png',r'C:\Users\Елена\Documents\GitHub\My-projects\Games\Project\Parkur\Textures\PlayerT2.png',True,'')
-level = 1
 sec,min,hours = 0,0,0
 deaths = 0
 tr = threading.Thread(target=Timer)
 tr.start()
 musics = MusicPlayer([r'C:\Users\Елена\Documents\GitHub\My-projects\Games\Project\Parkur\Musics\Level1.mp3',r'C:\Users\Елена\Documents\GitHub\My-projects\Games\Project\Parkur\Musics\Level2.mp3',r'C:\Users\Елена\Documents\GitHub\My-projects\Games\Project\Parkur\Musics\Level3.mp3',r'C:\Users\Елена\Documents\GitHub\My-projects\Games\Project\Parkur\Musics\Level4.mp3',r'C:\Users\Елена\Documents\GitHub\My-projects\Games\Project\Parkur\Musics\Level5.mp3'])
 Play = True
+level = 1
+data = Read()
+if data[8] != '':
+    deaths = int(data[8])
 def Parkur_Time():
-    global Player,level,sec,min,hours,Play
+    global Player,sec,min,hours,Play,level
+    sec = 0
+    min = 0
+    hours = 0
     pygame.init()
     w,h = 1000,500
     win = pygame.display.set_mode((w,h))
@@ -22,11 +29,19 @@ def Parkur_Time():
     clock = pygame.time.Clock()
     if level == 1:
         musics.Play(0)
+    elif level == 2:
+        Parkur.Main.Player.pos = [800,250]
+    elif level == 3:
+        Parkur.Main.Player.pos = [50,125]
+    elif level == 4:
+        Parkur.Main.Player.pos = [800,350]
+    elif level == 5:
+        pass
     while Play:
         for e in pygame.event.get():
             if e.type == pygame.QUIT:
                 exit()
-                location_Text = Text(None,50,f'Локация:',(500,0),(255,50,50))
+        location_Text = Text(None,50,f'Локация:',(500,0),(255,50,50))
         if level == 1:
             win.fill((255,255,255))
             location_Text = Text(None,50,f'Локация: Вход к [???]',(500,0),(255,50,50))

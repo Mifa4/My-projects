@@ -177,7 +177,7 @@ def Load_Level(level,win,Player):
             i.Update('',Player,level,None,None,None)
             win.blit(i.image,(i.pos[0],i.pos[1]))
     elif level == 5:
-        Parkur.Main.Player.start_pos = [50,475]
+        Parkur.Main.Player.start_pos = [45,475]
         if Lv5 == False:
             Lv5 = True
             Parkur.Main.Player.pos = [50,475]
