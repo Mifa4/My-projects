@@ -127,8 +127,8 @@ class MusicPlayer:
             self.musics[i].stop()
         self.musics[music_index].play()
 
-musics = MusicPlayer([r'C:\Users\Елена\Documents\GitHub\My-projects\Games\Project\Parkur\Musics\Fast_haus.mp3',r'C:\Users\Елена\Documents\GitHub\My-projects\Games\Project\Parkur\Musics\Thinking.mp3'])
-player = Player([50,50],[500,500],r'C:\Users\Елена\Documents\GitHub\My-projects\Games\Project\Parkur\Textures\PlayerT1.png',r'C:\Users\Елена\Documents\GitHub\My-projects\Games\Project\Parkur\Textures\PlayerT2.png')
+musics = MusicPlayer([r'C:\Users\Admin\Documents\GitHub\My-projects\Games\Project\Parkur\Musics\Fast_haus.mp3',r'C:\Users\Admin\Documents\GitHub\My-projects\Games\Project\Parkur\Musics\Thinking.mp3'])
+player = Player([50,50],[500,500],r'C:\Users\Admin\Documents\GitHub\My-projects\Games\Project\Parkur\Textures\PlayerT1.png',r'C:\Users\Admin\Documents\GitHub\My-projects\Games\Project\Parkur\Textures\PlayerT2.png')
 w,h = 1000,1000
 win = pygame.display.set_mode((w,h))
 clock = pygame.time.Clock()

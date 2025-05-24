@@ -6,12 +6,12 @@ import Parkur.Methods
 from Parkur.Classe import *
 import Parkur.Classe
 import Story.Console_of_secrets
-Player = Object([50,50],[27,327], [27, 327],r'C:\Users\Елена\Documents\GitHub\My-projects\Games\Project\Parkur\Textures\PlayerT1.png',r'C:\Users\Елена\Documents\GitHub\My-projects\Games\Project\Parkur\Textures\PlayerT2.png',True,'')
+Player = Object([50,50],[27,327], [27, 327],r'C:\Users\Admin\Documents\GitHub\My-projects\Games\Project\Parkur\Textures\PlayerT1.png',r'C:\Users\Admin\Documents\GitHub\My-projects\Games\Project\Parkur\Textures\PlayerT2.png',True,'')
 sec,min,hours = 0,0,0
 deaths = 0
 tr = threading.Thread(target=Timer)
 tr.start()
-musics = MusicPlayer([r'C:\Users\Елена\Documents\GitHub\My-projects\Games\Project\Parkur\Musics\Level1.mp3',r'C:\Users\Елена\Documents\GitHub\My-projects\Games\Project\Parkur\Musics\Level2.mp3',r'C:\Users\Елена\Documents\GitHub\My-projects\Games\Project\Parkur\Musics\Level3.mp3',r'C:\Users\Елена\Documents\GitHub\My-projects\Games\Project\Parkur\Musics\Level4.mp3',r'C:\Users\Елена\Documents\GitHub\My-projects\Games\Project\Parkur\Musics\Level5.mp3'])
+musics = MusicPlayer([r'C:\Users\Admin\Documents\GitHub\My-projects\Games\Project\Parkur\Musics\Level1.mp3',r'C:\Users\Admin\Documents\GitHub\My-projects\Games\Project\Parkur\Musics\Level2.mp3',r'C:\Users\Admin\Documents\GitHub\My-projects\Games\Project\Parkur\Musics\Level3.mp3',r'C:\Users\Елена\Documents\GitHub\My-projects\Games\Project\Parkur\Musics\Level4.mp3',r'C:\Users\Елена\Documents\GitHub\My-projects\Games\Project\Parkur\Musics\Level5.mp3'])
 Play = True
 level = 1
 data = Read()
