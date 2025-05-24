@@ -92,6 +92,7 @@ def Program():
             res = f'P{data[2]}'
         else:
             res = f'S'
+        data = Read()
         Write([f'open:{open_}',f'name:{data[1]}',f'level_of_parkur:{data[2]}',f'Time1:{data[3]}',f'Time2:{data[4]}',f'Time3:{data[5]}',f'Time4:{data[6]}',f'Time5:{data[7]}',f'Deaths:{data[8]}','!Controler of correct work!: !Controler of correct work!: Don`t redact that file!'])
         return res
 

