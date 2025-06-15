@@ -121,7 +121,7 @@ def Read():
 def Write(data):
     for i in range(0,len(data)):
         data[i] += '\n'
-    with open(r'C:\Users\Елена\Documents\GitHub\My-projects\Games\Project\Save\Save.cons_of_s','w+') as Write:
+    with open(r'C:\Users\Admin\Documents\GitHub\My-projects\Games\Project\Save\Save.cons_of_s','w+') as Write:
         Write.writelines(list(data))
 
 def Err0r():
