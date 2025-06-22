@@ -1,3 +1,5 @@
+#Базовые значения
+
 #десятичные приставки
 E = 10 ** 18
 P = 10 ** 15
@@ -16,11 +18,11 @@ p = 10 ** -12
 f = 10 ** -15
 a = 10 ** -18
 #Базавые значения
-metr = 100.
+metr = 1.
 millimeter = metr * 0.001
 centimeter = metr * 0.01
 
-second = 1
+second = 1.
 milisecond = second * 0.01
 minunte = second * 60.
 hour = second * 3600.

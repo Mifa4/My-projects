@@ -1,9 +1,12 @@
+#v 0.1.0
 import pygame
+
 from Acoustics import *
 from Optics import *
 from Termodinamics import *
 from Mechanic import *
 from FisicalQuantities import *
+
 import Acoustics
 import Optics
 import Termodinamics
@@ -13,82 +16,58 @@ import FisicalQuantities
 FPS = 60
 clock = pygame.time.Clock()
 quit_permission = True
-debug = True
+windows = []
 
-#Главный класс
-class Object:
-    def __init__(self):
-        pass
+class Camera: #Private
+    def __init__(self,pos):
+        self.pos = pos
+    
+    def SetPos(self,pos):
+        self.pos = pos
 
-def Update():
-    pass
+    def MoveLeft(self,speed):
+        self.pos[0] += speed
+    
+    def MoveRight(self,speed):
+        self.pos[0] -= speed
+    
+    def MoveUp(self,speed):
+        self.pos[1] += speed
+    
+    def MoveDown(self,speed):
+        self.pos[1] -= speed
 
-#Дебаг
+class Window: #Private
+    def __init__(self,size,objects,col,cam):
+        self.win = pygame.display.set_mode(size)
+        self.col = col
+        self.cam = cam
+        self.obj = objects
+    
+    def Obj_Update(self):
+        self.win.fill((self.col[0],self.col[1],self.col[2]))
+        for changer in self.obj:
+            changer.pos = changer.startPos - self.cam.pos
 
-#Методы для дебага
-class DebugTable:
-    def __init__(self):
-        pass
+class Object: #Private
+    def __init__(self,pos,type,col,Img):
+        self.startPos = pos[:]
+        self.pos = pos
 
-    def ShowTable(self):
-        pass
+class ObjectMassive:
+    def __init__(self,obj):
+        self.obj = obj
 
-    def AddSquare(self):
-        pass
+    def Do(self,Id):
+        obj = self.obj[Id]
 
-    def AddCircle(self):
-        pass
-
-    def AddCoustomObject(self):
-        pass
-
-#Класс дебага
-class Debug:
-    def __init__(self,size):
-        self.size = size
-        self.simulation = pygame.display.set_mode((self.size[0],self.size[1]))
-
-    def Start(self):
-        global debug
-        debug = True
-        self.simulation.fill((0,0,0))
-        pygame.display.set_caption('Debug')
-        icon = pygame.image.load(r'Engine_Images\Debug_image.png')
-        pygame.display.set_icon(icon)
-
-        for i in range(-100 * int(metr),self.size[1] + 100 * int(metr),int(centimeter)*5):
-            pygame.draw.line(self.simulation,(0,255,255),(-100 * int(metr),i),(100 * int(metr),i))
-        for i in range(-100 * int(metr),self.size[0] + 100 * int(metr),int(centimeter)*5):
-            pygame.draw.line(self.simulation,(0,255,255),(i,-100 * int(metr)),(i,100 * int(metr)))
-
-        for i in range(-100 * int(metr),self.size[1] + 100 * int(metr),int(centimeter)*10):
-            pygame.draw.line(self.simulation,(0,0,255),(-100 * int(metr),i),(100 * int(metr),i))
-        for i in range(-100 * int(metr),self.size[0] + 100 * int(metr),int(centimeter)*10):
-            pygame.draw.line(self.simulation,(0,0,255),(i,-100 * int(metr)),(i,100 * int(metr)))
-
-        for i in range(-100 * int(metr),self.size[1] + 100 * int(metr),int(centimeter)*25):
-            pygame.draw.line(self.simulation,(255,255,255),(-100 * int(metr),i),(100 * int(metr),i))
-        for i in range(-100 * int(metr),self.size[0] + 100 * int(metr),int(centimeter)*25):
-            pygame.draw.line(self.simulation,(255,255,255),(i,-100 * int(metr)),(i,100 * int(metr)))
-        
-        for i in range(-100 * int(metr),self.size[1] + 100 * int(metr),int(centimeter)*50):
-            pygame.draw.line(self.simulation,(255,255,255),(-100 * int(metr),i),(100 * int(metr),i))
-        for i in range(-100 * int(metr),self.size[0] + 100 * int(metr),int(centimeter)*50):
-            pygame.draw.line(self.simulation,(255,255,255),(i,-100 * int(metr)),(i,100 * int(metr)))
-
-        for i in range(-100 * int(metr),self.size[1] + 100 * int(metr),int(metr)):
-            pygame.draw.line(self.simulation,(255,0,0),(-100 * int(metr),i),(100 * int(metr),i))
-        for i in range(-100 * int(metr),self.size[0] + 100 * int(metr),int(metr)):
-            pygame.draw.line(self.simulation,(255,0,0),(i,-100 * int(metr)),(i,100 * int(metr)))
-
-#Тик игры
-deb = Debug([500,500])
-while True:
+while True: #Public
+    key = pygame.key.get_pressed()
     if quit_permission:
         for e in pygame.event.get():
             if e.type == pygame.QUIT:
                 exit()
-    if debug:
-        deb.Start()
+    for updater in windows:
+        updater.Obj_Update()
     pygame.display.update()
     clock.tick(FPS)
